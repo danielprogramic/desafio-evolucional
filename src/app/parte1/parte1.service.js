@@ -87,5 +87,6 @@ angular.module('parte1.services.Parte1', [])
         });
       },
     };
+
     return service;
   });
