@@ -38,7 +38,7 @@ This project follows a **"Folders-by-Feature"** structure very similar to [John 
 Each feature is treated as a mini Angular app. This structure allows us developers to easily locate code and identify what each file represents at a glance.
 By retaining this structure the project is much more manageable as it grows.
 
-![alt text](http://i.imgur.com/9jYKIoi.png "Folders-by-Feature structure")
+![alt text](http://www.danielprogramic.com.br/desafio-evolucional/assets/images/9jYKIoi.png "Folders-by-Feature structure")
 
 * The `app` folder contains the following individual features:
     * `parte2`: Contains the parte2 page related files.
