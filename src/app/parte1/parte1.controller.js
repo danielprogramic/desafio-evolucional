@@ -4,39 +4,32 @@ angular
     var vm = this;
     vm.searchClasses;
     vm.searchDegrees;
-
     vm.clearSearchClasses = function() {
       vm.searchClasses = '';
     };
-
     vm.selectedItens = {
       degrees: null,
       classes: null
     };
-
     Parte1
       .loadStudents()
       .then(function(result) {
         Parte1.itemStudents = result;
         vm.students = Parte1.itemStudents;
       });
-
     Parte1
       .getDegrees()
       .then(function(result) {
         vm.getItensDegrees = result;
       });
-
     Parte1
       .getClasses()
       .then(function(result) {
         vm.getItensClasses = result;
       });
-
     vm.clearSearchDegrees = function() {
       vm.searchDegrees = '';
     };
-
     $scope.inputText = 'Modal';
     vm.openDialog = function() {
       $mdDialog.show({
@@ -47,7 +40,6 @@ angular
         clickOutsideToClose: true
       });
     };
-
     vm.save300students = function() {
       var carrega = [];
       for (var i = 0; i < 300; i++) {
@@ -69,7 +61,6 @@ angular
           vm.getSelectedText(vm.selectedItens.degrees, vm.selectedItens.classes);
         });
     };
-
     vm.getSelectedText = function(degrees, classes) {
       var dataFilterStudents = [];
       var obj = {};
@@ -82,34 +73,32 @@ angular
           vm.getItensStudents = result;
         });
     };
-
     $element
       .find('input')
       .on('keydown', function(ev) {
         ev.stopPropagation();
       });
   })
-
-.component('modal', {
-  templateUrl: 'parte1/parte1.modal.view.html',
-  bindings: {
-    text: '<'
-  },
-  controller: function($scope, Parte1, $mdDialog, $timeout) {
-    var vm = $scope;
-    vm.dataPieChart = Parte1
-      .getAllStudentsPieChart({ 'degreeId': [1] })
-      .then(function(result) {
-        vm.myChartObject = {};
-        vm.myChartObject.type = 'PieChart';
-        vm.myChartObject.data = result;
-        vm.myChartObject.options = {
-          'title': 'Gerar gráfico com a quantidade de students por degree'
-        };
-        vm.sumStudants = Parte1.sumStudentsByKey;
-      });
-    vm.cancel = function() {
-      $mdDialog.cancel();
-    };
-  }
-});
+  .component('modal', {
+    templateUrl: 'parte1/parte1.modal.view.html',
+    bindings: {
+      text: '<'
+    },
+    controller: function($scope, Parte1, $mdDialog, $timeout) {
+      var vm = $scope;
+      vm.dataPieChart = Parte1
+        .getAllStudentsPieChart({ 'degreeId': [1] })
+        .then(function(result) {
+          vm.myChartObject = {};
+          vm.myChartObject.type = 'PieChart';
+          vm.myChartObject.data = result;
+          vm.myChartObject.options = {
+            'title': 'Gerar gráfico com a quantidade de students por degree'
+          };
+          vm.sumStudants = Parte1.sumStudentsByKey;
+        });
+      vm.cancel = function() {
+        $mdDialog.cancel();
+      };
+    }
+  });

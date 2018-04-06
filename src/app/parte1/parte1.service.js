@@ -1,11 +1,9 @@
 angular.module('parte1.services.Parte1', [])
   .factory('Parte1', function($q, $http, Utils) {
-
     var colluns = [
       { id: 't', label: 'Topping', type: 'string' },
       { id: 's', label: 'Slices', type: 'number' }
     ];
-
     var createRowPie = function(name, key, students) {
       var getFilterStudentsByKey = Utils.isFilterData(students, { 'degreeId': [key] });
       var addRow = [
@@ -15,7 +13,6 @@ angular.module('parte1.services.Parte1', [])
       service.sumStudentsByKey += getFilterStudentsByKey.length;
       return addRow;
     };
-
     var service = {
       itemStudents: [],
       sumStudentsByKey: 0,
@@ -87,6 +84,5 @@ angular.module('parte1.services.Parte1', [])
         });
       },
     };
-
     return service;
   });
