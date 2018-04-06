@@ -1,0 +1,90 @@
+<div class="parte1-page" ng-controller="Parte1Ctrl as parte1" ng-cloak layout-margin>
+  <form name="userForm" layout-margin>
+    <div layout="row" layout-xs="column" layout-sm="column" layout-align="space-between center">
+      <div flex-gt-sm="50">
+
+        <h3>Parte 1</h3>
+        <ul>
+          <li>
+            - Criar combo filtro a base dos JSONs 'degrees','classes'
+          </li>
+          <li>
+            - Popular a tela com as informações de students e suas relações (trazendo nome do degree, nome do class)
+          </li>
+          <li>
+            - Dar opção para editar o nome dos students e a class atribuida ao mesmo
+          </li>
+          <li>
+            - Filtrar conforme combo sempre levando em consideração os dados pós-alteração
+          </li>
+        </ul>
+      </div>
+      <div flex-gt-sm="50">
+        <h3>Parte2</h3>
+        <ul>
+          <li>
+            - Criar botão que gera mais 300 students e os distribuí entre os degrees e classes
+          </li>
+          <li>
+            - Gerar gráfico com a quantidade de students por degree
+          </li>
+          <li>
+            Nota: A cada clique no botão serão gerados + 300 students e o gráfico deverá ser atualizado
+          </li>
+
+        </ul>
+      </div>
+    </div>
+    <div layout-gt-sm="row">
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>Nível de escolaridade</label>
+        <md-select ng-model="parte1.selectedItens.degrees" ng-change="parte1.getSelectedText(parte1.selectedItens.degrees, parte1.selectedItens.classes)" md-on-close="parte1.clearSearchDegrees()" class="selectdemoSelectHeader">
+          <md-select-header class="demoHeaderSearchbox">
+            <input ng-model="parte1.searchDegrees" type="search" placeholder="Procurar" class="demoselectheader">
+          </md-select-header>
+          <md-optgroup label="degrees">
+            <md-option ng-value="itensdegrees" ng-repeat="itensdegrees in parte1.getItensDegrees | filter:parte1.searchDegrees">{{itensdegrees.name}}</md-option>
+          </md-optgroup>
+        </md-select>
+      </md-input-container>
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>Classe</label>
+        <md-select ng-model="parte1.selectedItens.classes" ng-change="parte1.getSelectedText(parte1.selectedItens.degrees, parte1.selectedItens.classes)" md-on-close="parte1.clearSearchClasses()" class="selectdemoSelectHeader">
+          <md-select-header class="demoHeaderSearchbox">
+            <input ng-model="parte1.searchClasses" type="search" placeholder="Procurar" class="demoselectheader">
+          </md-select-header>
+          <md-optgroup label="degrees">
+            <md-option ng-value="itensclasses" ng-repeat="itensclasses in parte1.getItensClasses |
+                        filter:parte1.searchClasses">{{itensclasses.name}}</md-option>
+          </md-optgroup>
+        </md-select>
+      </md-input-container>
+    </div>
+    <md-input-container class="md-block" flex-gt-sm-2>
+      <md-button ng-disabled="(!parte1.selectedItens.degrees) && (!parte1.selectedItens.classes)" ng-click="parte1.save300students()" class="md-raised md-primary align">
+        <md-icon>add circle</md-icon>Gerar +300 Estudantes</md-button>
+      <md-button ng-click="parte1.openDialog()" class="md-raised md-warn align">
+        <md-icon>assessment</md-icon>Gráfico</md-button>
+    </md-input-container>
+    <md-input-container class="md-block">
+      <h3 class="label">Lista de estudante(s) / Total {{(parte1.getItensStudents.length) ? parte1.getItensStudents.length : 0 }}</h3>
+      <md-content flex="" role="navigation" style="height: 200px;background-color:#F7F5C3;" class="_md flex">
+        <md-list ng-if="parte1.getItensStudents ||  parte1.getItensStudents.length != 0" ng-cloak layout-margin>
+          <md-list-item ng-repeat="student in parte1.getItensStudents" ng-click="parte1.openDialog()" class="noright" layout-margin>
+            <img alt="{{ student.name }}" ng-src="assets/images/user-profile.png" class="md-avatar" />
+            <p style="font-size:12px;"><b>{{ student.name }}</b></p>
+            <md-icon>create</md-icon>
+          </md-list-item>
+        </md-list>
+
+      </md-content>
+    </md-input-container>
+    <md-input-container class="md-block" flex-gt-sm>
+      <md-content flex="" style="height: 200px;background-color:#F7F5C3;padding:10px;">
+        <div style="font-size:12px;"> {{parte1.students}} </div>
+      </md-content>
+      <div style="font-size:12px;"> Total Geral {{parte1.students.length}} </div>
+    </md-input-container>
+
+  </form>
+</div>

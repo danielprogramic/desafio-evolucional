@@ -1,0 +1,9 @@
+.toolbar {
+  // Add all toolbar related styles in here
+  background-color: red;
+  @media (max-width: 500px) {
+    .logo {
+      width: 80%;
+    }
+  }
+}

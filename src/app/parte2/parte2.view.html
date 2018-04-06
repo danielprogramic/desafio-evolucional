@@ -1,0 +1,59 @@
+<div class="parte2-page" ng-controller="Parte2Ctrl as parte2" ng-cloak layout-margin>
+  <form name="userForm" layout-margin>
+    <div layout="row" layout-xs="column" layout-sm="column" layout-align="space-between center">
+      <div flex-gt-sm="50">
+
+        <h3>Parte 1</h3>
+        <ul>
+          <li>
+            - Criar combo filtro a base dos JSONs 'degrees','classes'
+          </li>
+          <li>
+            - Popular a tela utilizando o JSON relationships.
+          </li>
+          <li>
+            Nessa tela será necessária a visualização os seguintes itens:nome do professor, nome da materia, todos os nomes dos degrees relacionados, todos os nomes de classe de cada class relacionada ao degree - Criar botão que ao clicar, trás os students relacionados
+            ao degree em questão
+          </li>
+        </ul>
+
+
+
+      </div>
+      <div flex-gt-sm="50">
+        <ul>
+          <li>
+            - Criar formulário para gerar um novo registro do relationships. O registro deverá ser passivel as operações da parte 1 da tela 2
+          </li>
+        </ul>
+
+      </div>
+    </div>
+    <div layout-gt-sm="row">
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>Nível de escolaridade</label>
+        <md-select ng-model="parte2.selectedItens.degrees" ng-change="parte2.getSelectedText(parte2.selectedItens.degrees, parte2.selectedItens.classes)" md-on-close="parte2.clearSearchDegrees()" class="selectdemoSelectHeader">
+          <md-select-header class="demoHeaderSearchbox">
+            <input ng-model="parte2.searchDegrees" type="search" placeholder="Procurar" class="demoselectheader">
+          </md-select-header>
+          <md-optgroup label="degrees">
+            <md-option ng-value="itensdegrees" ng-repeat="itensdegrees in parte2.getItensDegrees | filter:parte2.searchDegrees">{{itensdegrees.name}}</md-option>
+          </md-optgroup>
+        </md-select>
+      </md-input-container>
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>Classe</label>
+        <md-select ng-model="parte2.selectedItens.classes" ng-change="parte2.getSelectedText(parte2.selectedItens.degrees, parte2.selectedItens.classes)" md-on-close="parte2.clearSearchClasses()" class="selectdemoSelectHeader">
+          <md-select-header class="demoHeaderSearchbox">
+            <input ng-model="parte2.searchClasses" type="search" placeholder="Procurar" class="demoselectheader">
+          </md-select-header>
+          <md-optgroup label="degrees">
+            <md-option ng-value="itensclasses" ng-repeat="itensclasses in parte2.getItensClasses |
+                          filter:parte2.searchClasses">{{itensclasses.name}}</md-option>
+          </md-optgroup>
+        </md-select>
+      </md-input-container>
+    </div>
+
+  </form>
+</div>

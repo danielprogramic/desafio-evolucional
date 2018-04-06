@@ -20,7 +20,7 @@ Structured boilerplate in the Angular Material project.
 * [Protractor](https://angular.github.io/protractor/#/)  end-to-end test framework
 
 ## Live Demo
-[Check out the live demo](http://cmacdonnacha.github.io/angular-material-boilerplate/)
+[Check out the live demo](http://www.danielprogramic.com.br/desafio-evolucional/)
 
 ## Quick Usage
 * `npm start` : Creates a development build folder called `public` and serves it on: [`http://localhost:3000/`](http://localhost:3000/)
@@ -33,6 +33,22 @@ Structured boilerplate in the Angular Material project.
 * `npm run build` : Creates the `public` build folder but doesn't serve it.
 * `npm run build --production` : Creates the `production` build folder but doesn't serve it.
 
+## Project Structure
+This project follows a **"Folders-by-Feature"** structure very similar to [John Papa's Styleguide](https://github.com/johnpapa/angular-styleguide#application-structure). From the screenshot below you can see that there are 6 separate features, a folder for each one.
+Each feature is treated as a mini Angular app. This structure allows us developers to easily locate code and identify what each file represents at a glance.
+By retaining this structure the project is much more manageable as it grows.
+
+![alt text](http://i.imgur.com/9jYKIoi.png "Folders-by-Feature structure")
+
+* The `app` folder contains the following individual features:
+    * `parte2`: Contains the parte2 page related files.
+    * `layout`: The high level layout container which stitches it all together.
+    * `shared`: Contains all shared services, directives, styles etc. used across the entire app.
+    * `sidenav`: Contains the sidenav related files.
+    * `parte1`: Contains the parte1 page related files.
+    * `toolbar`: Contains the toolbar related files.
+
+* The `assets` folder contains all globally used images.
 
 ## STRUCTURE
 - parte1.view.html | markup html with binding angular.
